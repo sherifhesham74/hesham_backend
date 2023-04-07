@@ -30,7 +30,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use("/", express.static("images"));
 app.use(fileUpload({
-  useTempFiles:true
+//   useTempFiles:true
 }))
 app.use(cors());
 
