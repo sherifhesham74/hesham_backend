@@ -21,7 +21,7 @@ function checkError(err, response){
 
 router.get("/",async(req,res)=>{
     try {
-        const posts=await carsnewwwModel.find().populate("owner")
+        const posts=await carsnewwModel.find().populate("owner")
         res.json(posts)
     } catch (error) {
         res.json(error)  
@@ -30,7 +30,7 @@ router.get("/",async(req,res)=>{
 
 router.get("/:id",async (req,res)=>{
     try {
-        const post=await carsnewwwModel.findById({_id:req.params.id}).populate("owner")
+        const post=await carsnewwModel.findById({_id:req.params.id}).populate("owner")
         res.json(post)
         // res.download(post)
     } catch (error) {
@@ -38,42 +38,6 @@ router.get("/:id",async (req,res)=>{
         
     }
 });
-// router.post("/", upload.array("image",12), async (req, res) => {
-//     const { files } = req;
-//     const  images = files.map(e => 
-//       e.filename 
-//     );
-//     const newwPost = await carsnewwModel({
-//       image: images,
-//       id: req.body.id,
-//       name: req.body.name,
-//       model: req.body.model,
-//       price: req.body.price,
-//       transmission: req.body.transmission,
-//       motor: req.body.motor,
-//       color: req.body.color,
-//       year: req.body.year,
-//       shopName: req.body.shopName,
-//       owner: req.body.owner
-//     });
-//     try {
-//       newwPost.save();
-//       res.json({
-//         newwPost,
-//         files: files,
-//         path: files.originalname,
-//       });
-//     } catch (error) {
-//       res.json(error);
-//     }
-//   });
-// لو هرفع اكتر من صورة 
-// router.post('/', (req, res, next) => {
-//     const files = req.files.photo; // assuming you're using the `express-fileupload` middleware
-//     const uploads = [];
-  //     for (const file of files) {
-//       uploads.push(cloudinary.uploader.upload(file.tempFilePath))};
-//       console.log(uploads)
 
 router.post('/', (req, res, next) => {
   const image = req.body.image;
@@ -97,7 +61,7 @@ router.post('/', (req, res, next) => {
       color: req.body.color,
       year: req.body.year,
       shopName: req.body.shopName,
-      // owner: req.body.owner
+       owner: req.body.owner
     });
 
     try {
@@ -113,15 +77,7 @@ router.post('/', (req, res, next) => {
     }
   });
 });
-// router.post("/",async(req,res)=>{
-//     const newPost=await carsnewModel(req.body);
-//     try {
-//         newPost.save();
-//         res.json(newPost);
-//     } catch (error) {
-//         res.json(error);   
-//     }
-// });
+
 
 router.put("/:id",async(req,res)=>{
 try {
