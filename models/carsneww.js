@@ -12,7 +12,7 @@ const carsnewwSchema=new mongoose.Schema({
     color:String,
     year:Number,
     shopName:String,
-   // owner:{type:mongoose.Schema.Types.ObjectId , ref:"CarsShop"}
+    owner:{type:mongoose.Schema.Types.ObjectId , ref:"CarsShop"}
 })
 
 carsnewwModel=new mongoose.model("carsneww",carsnewwSchema)
